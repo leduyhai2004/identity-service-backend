@@ -22,5 +22,5 @@ public class UserResponse {
     int age;
 
     @ElementCollection
-    Set<String> roles;
+    Set<RoleResponse> roles;
 }

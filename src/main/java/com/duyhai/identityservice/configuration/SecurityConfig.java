@@ -49,11 +49,14 @@ public class SecurityConfig {
 
         return httpSecurity.build();
     }
+
     //custom cac than phan trong claims
+    // mac dinh cua security la ROLE_ADMIN, nhung ma chung ta kh muon confuse nen set prefix
     @Bean
     JwtAuthenticationConverter jwtAuthenticationConverter(){
-        JwtGrantedAuthoritiesConverter jwtGrantedAuthoritiesConverter = new JwtGrantedAuthoritiesConverter();
-        jwtGrantedAuthoritiesConverter.setAuthorityPrefix("ROLE_");
+        JwtGrantedAuthoritiesConverter jwtGrantedAuthoritiesConverter
+                = new JwtGrantedAuthoritiesConverter();
+        jwtGrantedAuthoritiesConverter.setAuthorityPrefix("");
 
         JwtAuthenticationConverter jwtAuthenticationConverter = new JwtAuthenticationConverter();
         jwtAuthenticationConverter.setJwtGrantedAuthoritiesConverter(jwtGrantedAuthoritiesConverter);

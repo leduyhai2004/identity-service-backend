@@ -8,6 +8,7 @@ import com.duyhai.identityservice.enums.Role;
 import com.duyhai.identityservice.exception.AppException;
 import com.duyhai.identityservice.exception.ErrorCode;
 import com.duyhai.identityservice.mapper.UserMapper;
+import com.duyhai.identityservice.repository.RoleRepository;
 import com.duyhai.identityservice.repository.UserRepository;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
@@ -30,8 +31,11 @@ public class UserService {
     UserRepository userRepository;
     UserMapper userMapper;
     PasswordEncoder passwordEncoder;
+    RoleRepository roleRepository;
 
-    @PreAuthorize("hasRole('ADMIN')")
+    //@PreAuthorize("hasRole('ADMIN')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_ADMIN')")
+    @PreAuthorize("hasAnyAuthority('CREATE_DATA')")
     public List<User> findAll() {
         return userRepository.findAll();
     }
@@ -56,10 +60,13 @@ public class UserService {
                 .orElseThrow(() -> new RuntimeException("Not Found user")));
     }
 
-    public UserResponse updateUser(long id, UserUpdateRequest userUpdateRequest) {
+    public UserResponse updateUser(long id, UserUpdateRequest req) {
         User user = this.userRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Not Found user"));
-        userMapper.updateUser(user,userUpdateRequest);
+        userMapper.updateUser(user,req);
+        user.setPassword(passwordEncoder.encode(req.getPassword()));
+        var roles = roleRepository.findAllById(req.getRoles());
+        user.setRoles(new HashSet<>(roles));
         userRepository.save(user);
         return userMapper.toUserResponse(user);
     }
