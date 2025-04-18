@@ -25,7 +25,6 @@ public class User  {
     String gender;
     LocalDate birthday;
     int age;
-
-    @ElementCollection
-    Set<String> roles;
+    @ManyToMany
+    Set<Role> roles;
 }
