@@ -1,5 +1,6 @@
 package com.duyhai.identityservice.dto.request;
 
+import com.duyhai.identityservice.validator.DobConstraint;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Size;
 import lombok.*;
@@ -24,6 +25,8 @@ public class UserCreationRequest {
     String phone;
     String address;
     String gender;
+
+    @DobConstraint(min = 10, message = "INVALID_DOB")
     LocalDate birthday;
     int age;
 }
