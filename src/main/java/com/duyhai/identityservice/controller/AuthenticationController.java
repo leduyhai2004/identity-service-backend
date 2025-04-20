@@ -1,8 +1,6 @@
 package com.duyhai.identityservice.controller;
 
-import com.duyhai.identityservice.dto.request.ApiResponse;
-import com.duyhai.identityservice.dto.request.AuthenticationRequest;
-import com.duyhai.identityservice.dto.request.IntrospectRequest;
+import com.duyhai.identityservice.dto.request.*;
 import com.duyhai.identityservice.dto.response.AuthenticationResponse;
 import com.duyhai.identityservice.dto.response.IntrospectResponse;
 import com.duyhai.identityservice.service.AuthenticationService;
@@ -35,6 +33,21 @@ public class AuthenticationController {
                 .build();
     }
 
+    @PostMapping("/refresh")
+    public ApiResponse<AuthenticationResponse> refreshToken( @RequestBody RefreshTokenRequest request)
+            throws ParseException, JOSEException {
+        var result = authenticationService.refreshToken(request);
+        System.out.println(result);
+        return ApiResponse.<AuthenticationResponse>builder()
+                .result(result)
+                .build();
+    }
+
+    @PostMapping("/log-out")
+    public ApiResponse<Void> logout( @RequestBody LogouttRequest request) throws ParseException, JOSEException {
+       authenticationService.logout(request);
+        return ApiResponse.<Void>builder().build();
+    }
     @PostMapping("/introspect")
     ApiResponse<IntrospectResponse> authenticate(@RequestBody IntrospectRequest request)
             throws ParseException, JOSEException {

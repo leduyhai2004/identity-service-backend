@@ -69,11 +69,8 @@ public class GlobalExceptionHandler {
              attributes = constraintViolations.getConstraintDescriptor().getAttributes();
 
             log.info(attributes.toString());
-
         } catch (IllegalArgumentException e){
-
         }
-
         ApiResponse apiResponse = new ApiResponse();
 
         apiResponse.setCode(errorCode.getCode());
