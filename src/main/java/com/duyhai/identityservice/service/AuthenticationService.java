@@ -44,11 +44,11 @@ public class AuthenticationService {
     InvalidTokenRepository invalidTokenRepository;
 
     @NonFinal
-    @Value("${jwt.signerKey}")
+    @Value("${jwt.valid-duration}")
     protected long VALID_DURATION;
 
     @NonFinal
-    @Value("${jwt.signerKey}")
+    @Value("${jwt.refreshable-duration}")
     protected long REFRESHABLE_DURATION;
 
     @NonFinal
