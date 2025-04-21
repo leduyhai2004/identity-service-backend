@@ -194,5 +194,4 @@ public class AuthenticationService {
         }
         return signedJWT;
     }
-
 }
