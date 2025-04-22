@@ -13,6 +13,7 @@ import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.test.context.TestPropertySource;
 
 import java.time.LocalDate;
 
@@ -21,6 +22,7 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyString;
 
 @SpringBootTest
+@TestPropertySource("/test.properties")
 public class UserServiceTest {
     @Autowired
     private UserService userService;
@@ -30,12 +32,12 @@ public class UserServiceTest {
 
     private UserCreationRequest userCreationRequest;
     private User user;
-    @Autowired
-    private AssertTrueValidator assertTrueValidator;
+    private LocalDate dob;
 
     //chuan bi data
     @BeforeEach
     void initData(){
+        dob = LocalDate.of(1990, 1, 1);
         userCreationRequest = UserCreationRequest.builder()
                 .username("abcd")
                 .password("123")
@@ -43,7 +45,7 @@ public class UserServiceTest {
                 .phone("02034234")
                 .address("234234")
                 .gender("Male")
-                .birthday(LocalDate.parse("2004-07-02"))
+                .birthday(dob)
                 .age(20)
                 .build();
 
@@ -54,7 +56,7 @@ public class UserServiceTest {
                 .phone("02034234")
                 .address("234234")
                 .gender("Male")
-                .birthday(LocalDate.parse("2004-07-02"))
+                .birthday(dob)
                 .age(20)
                 .build();
     }
