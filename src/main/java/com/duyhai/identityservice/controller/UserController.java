@@ -1,20 +1,23 @@
 package com.duyhai.identityservice.controller;
 
+import java.util.List;
+
+import jakarta.validation.Valid;
+
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.web.bind.annotation.*;
+
 import com.duyhai.identityservice.dto.request.ApiResponse;
 import com.duyhai.identityservice.dto.request.UserCreationRequest;
 import com.duyhai.identityservice.dto.request.UserUpdateRequest;
 import com.duyhai.identityservice.dto.response.UserResponse;
 import com.duyhai.identityservice.entity.User;
 import com.duyhai.identityservice.service.UserService;
-import jakarta.validation.Valid;
+
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequestMapping()
@@ -47,7 +50,7 @@ public class UserController {
     @PutMapping("/user/{id}")
     public UserResponse updateUser(@RequestBody UserUpdateRequest userReq, @PathVariable("id") long id) {
         System.out.println(userReq.toString());
-        return this.userService.updateUser(id,userReq);
+        return this.userService.updateUser(id, userReq);
     }
 
     @DeleteMapping("/user/{id}")
@@ -58,6 +61,7 @@ public class UserController {
     @GetMapping("/user/myInfo")
     public ApiResponse<UserResponse> getMyInfo() {
         return ApiResponse.<UserResponse>builder()
-                .result(this.userService.getMyInfo()).build();
+                .result(this.userService.getMyInfo())
+                .build();
     }
 }

@@ -1,20 +1,20 @@
 package com.duyhai.identityservice.service;
 
+import java.util.HashSet;
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+
 import com.duyhai.identityservice.dto.request.RoleRequest;
 import com.duyhai.identityservice.dto.response.RoleResponse;
-import com.duyhai.identityservice.entity.Role;
 import com.duyhai.identityservice.mapper.RoleMapper;
 import com.duyhai.identityservice.repository.PermissionRepository;
 import com.duyhai.identityservice.repository.RoleRepository;
+
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PostMapping;
-
-import java.util.HashSet;
-import java.util.List;
 
 @Service
 @RequiredArgsConstructor

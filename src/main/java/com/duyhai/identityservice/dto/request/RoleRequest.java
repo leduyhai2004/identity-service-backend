@@ -1,9 +1,9 @@
 package com.duyhai.identityservice.dto.request;
 
+import java.util.Set;
+
 import lombok.*;
 import lombok.experimental.FieldDefaults;
-
-import java.util.Set;
 
 @Data
 @NoArgsConstructor
@@ -16,5 +16,4 @@ public class RoleRequest {
     String description;
 
     Set<String> permissions;
-
 }

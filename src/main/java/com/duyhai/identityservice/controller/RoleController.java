@@ -1,19 +1,18 @@
 package com.duyhai.identityservice.controller;
 
+import java.util.List;
+
+import org.springframework.web.bind.annotation.*;
+
 import com.duyhai.identityservice.dto.request.ApiResponse;
-import com.duyhai.identityservice.dto.request.PermissionRequest;
 import com.duyhai.identityservice.dto.request.RoleRequest;
-import com.duyhai.identityservice.dto.response.PermissionResponse;
 import com.duyhai.identityservice.dto.response.RoleResponse;
-import com.duyhai.identityservice.service.PermissionService;
 import com.duyhai.identityservice.service.RoleService;
+
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/roles")

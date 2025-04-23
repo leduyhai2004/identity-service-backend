@@ -1,12 +1,13 @@
 package com.duyhai.identityservice.mapper;
 
+import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
+import org.mapstruct.MappingTarget;
+
 import com.duyhai.identityservice.dto.request.UserCreationRequest;
 import com.duyhai.identityservice.dto.request.UserUpdateRequest;
 import com.duyhai.identityservice.dto.response.UserResponse;
 import com.duyhai.identityservice.entity.User;
-import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
-import org.mapstruct.MappingTarget;
 
 @Mapper(componentModel = "spring")
 public interface UserMapper {
