@@ -1,0 +1,4 @@
+jwt:
+  signerKey: "OHVsncUFjjZc0LKmaBujT+dBsJnGgKfA0Yky8h22peTQpFQqrQd58H5gUXmKgyBU"
+  valid-duration : 7300 #insecod
+  refreshable-duration : 720000 #insecond : khoang thoi gian co the refresh token do

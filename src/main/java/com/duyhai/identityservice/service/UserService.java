@@ -3,17 +3,17 @@ package com.duyhai.identityservice.service;
 import java.util.HashSet;
 import java.util.List;
 
-import com.duyhai.identityservice.constant.PredefinedRole;
-import com.duyhai.identityservice.entity.Role;
 import org.springframework.security.access.prepost.PostAuthorize;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.duyhai.identityservice.constant.PredefinedRole;
 import com.duyhai.identityservice.dto.request.UserCreationRequest;
 import com.duyhai.identityservice.dto.request.UserUpdateRequest;
 import com.duyhai.identityservice.dto.response.UserResponse;
+import com.duyhai.identityservice.entity.Role;
 import com.duyhai.identityservice.entity.User;
 import com.duyhai.identityservice.exception.AppException;
 import com.duyhai.identityservice.exception.ErrorCode;
